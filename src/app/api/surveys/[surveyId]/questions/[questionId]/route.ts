@@ -8,11 +8,10 @@ export const DELETE = routeHandler(async (request, context) => {
     where: { id: questionId },
   });
 
-  // Update the position counters for the remaining questions
-  const updatedResponse = await prisma.question.updateMany({
+  await prisma.question.updateMany({
     where: {
       surveyId: surveyId,
-      position: { gt: deletedQuestion.position }, // Select questions after the deleted question
+      position: { gt: deletedQuestion.position },
     },
     data: {
       position: {
