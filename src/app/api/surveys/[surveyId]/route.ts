@@ -1,13 +1,6 @@
 import prisma from "@/lib/prisma";
 import routeHandler from "@/lib/routeHandler";
 import Survey from "@/schemas/Survey";
-import { NextRequest, NextResponse } from "next/server";
-
-type ApiHandlerContext = {
-  params: {
-    surveyId: string;
-  };
-};
 
 export const GET = routeHandler(async (request, context) => {
   const { surveyId } = context.params;

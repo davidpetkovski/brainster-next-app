@@ -1,7 +1,5 @@
-import { NextRequest, NextResponse } from "next/server";
 import prisma from "@/lib/prisma";
 import SurveySchema from "@/schemas/Survey";
-import { ZodError } from "zod";
 import routeHandler from "@/lib/routeHandler";
 
 export const GET = routeHandler(async (request, context) => {
