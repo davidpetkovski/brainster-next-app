@@ -9,7 +9,11 @@ export const GET = routeHandler(async (request, context) => {
       id: surveyId,
     },
     include: {
-      questions: true,
+      questions: {
+        orderBy: {
+          position: "asc",
+        },
+      },
     },
   });
 

@@ -21,3 +21,5 @@ export const POST = routeHandler(async (request, context) => {
 
   return survey;
 });
+
+export default GET;
