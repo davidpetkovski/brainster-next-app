@@ -24,7 +24,7 @@ model Survey {
   status       SurveyStatus @default(DRAFT)
   updatedAt    DateTime     @updatedAt
   createdAt    DateTime     @default(now())
-  questions Question[]
+  questions    Question[]
 }
 
 model Question {

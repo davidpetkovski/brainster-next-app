@@ -1,19 +1,12 @@
 import prisma from "@/lib/prisma";
-import routeHandler from "@/lib/routeHandler";
 import Survey from "@/schemas/Survey";
+import routeHandler from "@/lib/routeHandler";
 
-export const GET = routeHandler(async (request, context) => {
+export const GET = routeHandler(async (_, context) => {
   const { surveyId } = context.params;
   const survey = await prisma.survey.findUniqueOrThrow({
     where: {
       id: surveyId,
-    },
-    include: {
-      questions: {
-        orderBy: {
-          position: "asc",
-        },
-      },
     },
   });
 
@@ -35,6 +28,15 @@ export const PATCH = routeHandler(async (request, context) => {
     },
     data,
   });
-
   return survey;
+});
+
+export const DELETE = routeHandler(async (_, context) => {
+  const { surveyId } = context.params;
+
+  await prisma.survey.delete({
+    where: {
+      id: surveyId,
+    },
+  });
 });
